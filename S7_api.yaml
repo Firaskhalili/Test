@@ -5,6 +5,6 @@ steps:
   - 
     script: "echo Execution Set will start executing now   \n"
   - 
-    script: "curl -X POST "https://platform.subject-7.com/api/v2/test-case-executions" -H  "accept: application/json" -H  "X-API-KEY: ZmlyYXNfYXV0b21hdGlvbg==.U3ViamVjdDc=.dGVzdF9hdXRvbWF0aW9u.ed49e10232b04f9fb1b81a73dc51a971" -H  "Content-Type: application/json" -d "{\"name\":\"subject7_website_login_logout\",\"configuration\":{\"pool\":\"default\",\"browserType\":\"CHROME\",\"videoCaption\":true,\"videoRequired\":true,\"runtimeSpeed\":200,\"dataSetSelection\":[],\"projectName\":\"Common\",\"versionName\":\"default\",\"screenShotRequired\":true,\"logRequired\":true,\"locatorTimeout\":5,\"pageRenderTimeout\":30}}""
+    script: "curl -X POST "https://platform.subject-7.com/api/v2/test-case-executions" -H  "X-API-KEY: ZmlyYXNfYXV0b21hdGlvbg==.U3ViamVjdDc=.dGVzdF9hdXRvbWF0aW9u.ed49e10232b04f9fb1b81a73dc51a971" -H  "Content-Type: application/json" -d "{\"name\":\"subject7_website_login_logout\",\"configuration\":{\"pool\":\"default\",\"browserType\":\"CHROME\",\"videoCaption\":true,\"videoRequired\":true,\"runtimeSpeed\":200,\"dataSetSelection\":[],\"projectName\":\"Common\",\"versionName\":\"default\",\"screenShotRequired\":true,\"logRequired\":true,\"locatorTimeout\":5,\"pageRenderTimeout\":30}}""
 trigger: 
   - main
