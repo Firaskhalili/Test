@@ -1,6 +1,6 @@
 --- 
 pool: 
-  vmImage: Default
+  vmImage: ubuntu-latest
 steps: 
   - 
     script: "echo Execution Set will start executing now   \n"
