@@ -5,6 +5,6 @@ steps:
   - 
     script: "echo Execution Set will start executing now   \n"
   - 
-    script: "curl -X POST \"https://platform.subject-7.com/api/v2/test-library?offset=0&limit=20\" -H  \"accept: application/json\" -H  \"X-API-KEY: ZmlyYXNfYXV0b21hdGlvbg==.U3ViamVjdDc=.dGVzdF9hdXRvbWF0aW9u.ed49e10232b04f9fb1b81a73dc51a971\" -H  \"Content-Type: application/json\"
+    script: "curl -X POST \"https://platform.subject-7.com/api/v2/test-library?offset=0&limit=20\" -H  \"accept: application/json\" -H  \"X-API-KEY: ZmlyYXNfYXV0b21hdGlvbg==.U3ViamVjdDc=.dGVzdF9hdXRvbWF0aW9u.ed49e10232b04f9fb1b81a73dc51a971\" -H  \"Content-Type: application/json\" -d \"{\\\"name\\\":\\\"Regression_Test_Web\\\",\\\"configuration\\\":{\\\"pool\\\":\\\"win10\\\",\\\"buildNumber\\\":\\\"3.16.51\\\",\\\"browserTypes\\\":[\\\"CHROME\\\"],\\\"videoCaption\\\":true,\\\"delay\\\":10,\\\"rotations\\\":1,\\\"runtimeSpeed\\\":1000,\\\"callbackArgs\\\":null,\\\"dataSetSelection\\\":[{\\\"testCaseName\\\":\\\"Reference_Web_Application\\\",\\\"templateName\\\":\\\"Users\\\",\\\"dataSetNames\\\":[\\\"admin\\\"]}]}}\" "
 trigger: 
   - main
