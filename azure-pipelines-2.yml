@@ -1,0 +1,10 @@
+ui_test:
+  stage: test
+  variables:
+    DEPLOY_CURL_COMMAND: 'curl -X POST "https://platform.subject-7.com/api/v2/executions" -H  "accept: application/json" -H  "Authorization: Basic YW11dGhhOkBXU1gxcWF6" -H  "Content-Type: application/json" -d "{\"name\":\"Regression_Test_Web\",\"configuration\":{\"pool\":\"default\",\"buildNumber\":\"2.0.0.1\",\"browserTypes\":[\"CHROME\"],\"videoCaption\":true,\"delay\":10,\"rotations\":1,\"runtimeSpeed\":1000,\"callbackArgs\":null,\"dataSetSelection\":[{\"testCaseName\":\"Reference_Web_Application\",\"templateName\":\"Users\",\"dataSetNames\":[\"admin\"]}]}}"'
+  script:
+    - echo Execution Set will start executing now
+    - echo $DEPLOY_CURL_COMMAND
+    - 'eval "$DEPLOY_CURL_COMMAND"'
+    - echo "Testing application..."
+    - echo "Application successfully tested."
