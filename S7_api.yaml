@@ -1,10 +1,20 @@
---- 
-pool: 
-  vmImage: ubuntu-latest
-steps: 
-  - 
-    script: "echo Execution Set will start executing now   \n"
-  - 
-    script: "curl -X POST "https://platform.subject-7.com/api/v2/executions/latest" -H  " accept: application/json" -H  "X-API-KEY: YXV0b21hdGlvbg==.U3ViamVjdDc=.dGVzdF9hdXRvbWF0aW9u.f4be5839051f4ac4b3b4fa320500ecfb" -H  "Content-Type: application/json" -d "[{\"executionSetName\":\"firas_test_apr1\",\"projectName\":\"Common\",\"versionName\":\"default\"}]"
-trigger: 
-  - main
+name: Subject7 Execution Run
+on:
+  workflow_dispatch:
+jobs:
+ job-a:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Cloud Run execution of Subject7 test cases
+      id: executionset
+      run: |
+        echo ::set-output name=executionid::"$(curl -X POST "https://platform.subject-7.com/api/v2/executions" -H  "accept: application/json" -H  "Authorization: Basic YW11dGhhOkBXU1gxcWF6" -H  "Content-Type: application/json" -d "{\"name\":\"Regression_Test_Web\",\"configuration\":{\"pool\":\"win10\",\"buildNumber\":\"4.11.21\",\"browserTypes\":[\"CHROME\"],\"videoCaption\":true,\"delay\":10,\"rotations\":1,\"runtimeSpeed\":1000,\"callbackArgs\":null,\"dataSetSelection\":[{\"testCaseName\":\"Reference_Web_Application\",\"templateName\":\"Users\",\"dataSetNames\":[\"admin\"]}]}}" | jq '.id' )"
+    - name: Sleep for 120 seconds
+      run: sleep 120s
+    - name: Cloud Run execution of Subject7 test
+      id: result
+      run: |
+        echo ::set-output name=status::"$(curl -X GET "https://platform.subject-7.com/api/v2/executions/${{steps.executionset.outputs.executionid}}" -H  "accept: application/json" -H  "Authorization: Basic YW11dGhhOkBXU1gxcWF6" | jq '.executionStatus' )"
+    - name: Cloud Run status
+      run: |
+        echo "The result is ${{steps.result.outputs.status}}"
